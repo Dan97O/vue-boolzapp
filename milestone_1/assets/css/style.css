@@ -1,4 +1,46 @@
+:root {
+  --wa-gradient-green: #009688;
+  --wa-gradient-light: #dbdbd3;
+  --wa-container-light: #ffffff;
+  --wa-header-icon: #b1b1b1;
+  --wa-header-bg: #eaeaea;
+
+}
+
+
+
 body{
   height: 100vh;
-  background: linear-gradient( #009688 15%, #dcdbd2 10% );
+  background: linear-gradient(var(--wa-gradient-green) 15%, var(--wa-gradient-light) 10% );
+  overflow: hidden;
+}
+
+.my_container{
+  max-width: 1200px;
+  width: 80%;
+  margin: 1.5rem auto;
+  background-color: var(--wa-container-light);
+  height: calc(100vh - 3rem);
+}
+
+.user_profile h5{
+  margin-bottom: -0.8px;
+}
+
+.user_profile img {
+  width: 40px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  margin-right: 5px;
+  
+}
+
+.nav_profile i {
+  text-decoration: none;
+  color: var(--wa-header-icon);
+}
+
+.banner_left_contacts header{
+  width: 40%;
+  background-color: var(--wa-header-bg);
 }
