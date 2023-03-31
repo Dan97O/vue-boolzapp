@@ -80,10 +80,9 @@ body{
 /* #endregion silent mode */
 
 
-/* #region search */
+/* #region search group */
 .search_group  i {
- 
   color: var(--wa-header-icon);
 }
+/* #endregion search group */
 
-/* #endregion search */

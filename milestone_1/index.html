@@ -43,6 +43,7 @@
           </a>
         </nav>
       </header>
+      <!-- /header profile -->
       <main>
         <div class="silent_mode d-flex p-3 align-items-center">
           <div class="circle_silent_mode d-flex justify-content-center align-items-center">
@@ -53,12 +54,25 @@
             <a href="#">Attiva notifiche desktop</a>
           </div>
         </div>
+        <!-- /silent_mode -->
         <div class="search_group input-group d-flex bg-white rounded-0 border-0">
           <span class="input-group-text bg-white rounded-0 border-0" id="search_group">
             <i class="fa-solid fa-magnifying-glass mx-3 border-0"></i>
           </span>
           <input type="text" class="form-control rounded-0 border-0" placeholder="Cerca o inizia una nuova chat"
           aria-label="Search" aria-describedby="search_group">
+        </div>
+        <!-- /search group -->
+        <div class="users overflow-auto">
+          <div class="d-flex align-items-center bg-white" v-for="(user, index) in contacts">
+            <img class="img-fluid circle my-1" src="./assets/img/avatar_1.jpg" alt="user.name">
+            <div class="info d-flex flex-column my-1">
+              <p class="m-0 p-0 fw-bold">{{user.name}}</p>
+              <p class="m-0 p-0">ultimo messaggio inviato</p>
+              <p class="m-0 p-0">{{user.messages[0].date}}</p>
+            </div>
+        
+          </div>
         </div>
 
 
@@ -78,9 +92,11 @@
 
 
       </main>
+      <!-- /main -->
 
 
     </section>
+    <!-- /banner_left_contacts -->
 
     <section class="contacts_message">
 
