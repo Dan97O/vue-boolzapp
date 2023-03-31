@@ -31,6 +31,7 @@ body{
   margin: 1.5rem auto;
   background-color: var(--wa-container-light);
   height: calc(100vh - 3rem);
+  display: flex;
 }
 
 .banner_left_contacts{
@@ -105,4 +106,13 @@ body{
   font-size: 10px;
   color: var(--wa-header-icon);
 }
+
 /* #endregion users_contacts */
+.contacts_message .user_profile h5{
+  margin-bottom: -8.8px;
+}
+
+.contacts_message header{
+  background-color: var(--wa-header-bg);
+  border-left: 1px solid var(--wa-header-icon);
+}
