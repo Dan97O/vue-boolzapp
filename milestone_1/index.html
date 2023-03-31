@@ -66,24 +66,27 @@
         <div class="users overflow-auto ps-3 d-flex flex-column ">
           <div class="d-flex align-items-center bg-white" v-for="(user, index) in contacts">
             <div class="d-flex justify-content-between w-100">
-
               <div class="d-flex align-items-center">
-                <img class="img-fluid circle my-1 me-2" src="./assets/img/avatar_1.jpg" alt="user.name">
+                <img class="img-fluid circle my-3 me-2" src="./assets/img/avatar_1.jpg" alt="user.name">
                 <div class="user_txt">
                   <div class="user_name fw-semibold">{{user.name}}</div>
                   <div class="last_message_sent"> Ultimo messaggio inviato
                   </div>
                 </div>
+                <!-- /user_txt -->
               </div>
-  
               <div class="user_hour">
                 <span class="hour_message"> {{user.messages[0].date}} </span>
               </div>
+              <!-- /user_hour -->
             </div>
+            <!-- /d-flex justify-content-between w-100 -->
           </div>
 
         </div>
+        <!-- /users -->
   </div>
+  <!-- /#app -->
 
 
 

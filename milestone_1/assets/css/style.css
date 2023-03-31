@@ -1,7 +1,7 @@
 body{
   height: 100vh;
   background: linear-gradient(var(--wa-gradient-green) 15%, var(--wa-gradient-light) 10% );
-  overflow: hidden;
+   overflow: hidden; 
 }
 
 :root {
@@ -85,6 +85,13 @@ body{
   color: var(--wa-header-icon);
 }
 /* #endregion search group */
+
+/* #region users_contacts */
+.users{
+  height: 600px;
+  overflow-y: auto;
+}
+
 .user_name{
   font-size: 14px;
 }
@@ -98,3 +105,4 @@ body{
   font-size: 10px;
   color: var(--wa-header-icon);
 }
+/* #endregion users_contacts */
