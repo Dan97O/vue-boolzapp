@@ -4,9 +4,18 @@
   --wa-container-light: #ffffff;
   --wa-header-icon: #b1b1b1;
   --wa-header-bg: #eaeaea;
+  --wa-silent-mode: #8edafc;
 
 }
 
+/* #region Utilities */
+.circle{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* #endregion Utilities */
 
 
 body{
@@ -21,6 +30,10 @@ body{
   margin: 1.5rem auto;
   background-color: var(--wa-container-light);
   height: calc(100vh - 3rem);
+}
+
+.banner_left_contacts{
+  width: 40%;
 }
 
 .user_profile h5{
@@ -41,6 +54,21 @@ body{
 }
 
 .banner_left_contacts header{
-  width: 40%;
   background-color: var(--wa-header-bg);
+}
+
+.silent_mode{
+  background-color: var(--wa-silent-mode);
+}
+
+.circle_silent_mode{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--wa-container-light);
+  color: var(--wa-silent-mode);
+}
+
+.silent_mode h6{
+  margin-bottom: -0.2rem;
 }
