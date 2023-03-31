@@ -120,36 +120,28 @@
 
         <div class="h-100 px-5 overflow-auto position-relative">
           <div class="py-3 text d-flex flex-column-reverse flex-shrink-0 ">
-            <div class="message">
-              <div class="message_received">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, voluptate? Dolore eaque, quis optio iusto libero necessitatibus quae magni iste.
+            <div class="message" v-for="message in contacts[activeChat].messages.slice().reverse()">
+              <div class="message_received" :class="message.status">
+               <p>
+                {{message.message}}
+              </p>
+                <span class="hour_message">
+                  {{message.date}}
+                </span>
               </div>
-              <div class="message_received">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eos voluptatum adipisci, earum illum dolorum neque illo nisi natus consectetur quibusdam laboriosam quo! Eum nulla cumque aliquam quibusdam doloribus tempore!
-              </div>
-              <div class="message_received">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, impedit.
-              </div>
-              <div class="message_received">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, impedit.
-              </div>
-              <div class="message_received">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eos voluptatum adipisci, earum illum dolorum neque illo nisi natus consectetur quibusdam laboriosam quo! Eum nulla cumque aliquam quibusdam doloribus tempore!
-              </div>
-              <div class="message_received">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, impedit.
-              </div>
-              <div class="message_received">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, impedit.
-              </div>
+             
+
             </div>
+            
           </div>
+          <!-- /message_received -->
+          
+        
+
+
+
 
         </div>
-
-
-
-
 
 
       </main>
@@ -157,7 +149,7 @@
       <footer>
         <div class="d-flex justify-content-around align-items-center px-3">
           <i class="fa-regular fa-face-smile fa-lg"></i>
-          <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage"
+          <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage" v-model="newMessage" @keyup.enter="messageGeneratedTime()"
             placeholder="Scrivi un nuovo messaggio">
           <i class="fa-solid fa-microphone fa-lg"></i>
         </div>

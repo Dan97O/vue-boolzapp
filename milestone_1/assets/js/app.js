@@ -13,6 +13,12 @@ createApp({
   data() {
     return {
       activeChat: 0,
+      newMessage: '',
+      newObject: {
+        date: '',
+        message: '',
+        status: 'sent',
+      },
       contacts: [
         {
             name: 'Michele',
@@ -182,8 +188,26 @@ createApp({
   methods: {
     activeChat_change(index){
       this.activeChat = index
-    }
-    
+    },
+    newMessageGenerated(){
+      this.newObject.message = this.newMessage
+      this.newMessage = ''
+      this.newObject.status ='sent'
+      this.contacts[this.activeChat].messages.push( {...this.newObject} )
+    },
+
+    requestNewMessage(){
+      this.newObject.message = 'ok😎👌'
+      this.newObject.status = 'received'
+      this.contacts[this.activeChat].messages.push({...this.newObject})
+      this.newObject.message = ''
+    },
+    messageGeneratedTime(){
+      this.newMessageGenerated();
+      setTimeout(() =>{this.requestNewMessage()},1000);
+     }
   }
 
 }).mount('#app')
+
+
