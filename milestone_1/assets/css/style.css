@@ -116,3 +116,8 @@ body{
   background-color: var(--wa-header-bg);
   border-left: 1px solid var(--wa-header-icon);
 }
+
+.contacts_message main{
+ background-image: url(../img/mine.jpg);
+ height: 660px;
+}
