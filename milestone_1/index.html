@@ -60,20 +60,30 @@
             <i class="fa-solid fa-magnifying-glass mx-3 border-0"></i>
           </span>
           <input type="text" class="form-control rounded-0 border-0" placeholder="Cerca o inizia una nuova chat"
-          aria-label="Search" aria-describedby="search_group">
+            aria-label="Search" aria-describedby="search_group">
         </div>
         <!-- /search group -->
-        <div class="users overflow-auto">
+        <div class="users overflow-auto ps-3 d-flex flex-column ">
           <div class="d-flex align-items-center bg-white" v-for="(user, index) in contacts">
-            <img class="img-fluid circle my-1" src="./assets/img/avatar_1.jpg" alt="user.name">
-            <div class="info d-flex flex-column my-1">
-              <p class="m-0 p-0 fw-bold">{{user.name}}</p>
-              <p class="m-0 p-0">ultimo messaggio inviato</p>
-              <p class="m-0 p-0">{{user.messages[0].date}}</p>
+            <div class="d-flex justify-content-between w-100">
+
+              <div class="d-flex align-items-center">
+                <img class="img-fluid circle my-1 me-2" src="./assets/img/avatar_1.jpg" alt="user.name">
+                <div class="user_txt">
+                  <div class="user_name fw-semibold">{{user.name}}</div>
+                  <div class="last_message_sent"> Ultimo messaggio inviato
+                  </div>
+                </div>
+              </div>
+  
+              <div class="user_hour">
+                <span class="hour_message"> {{user.messages[0].date}} </span>
+              </div>
             </div>
-        
           </div>
+
         </div>
+  </div>
 
 
 
@@ -91,17 +101,17 @@
 
 
 
-      </main>
-      <!-- /main -->
+  </main>
+  <!-- /main -->
 
 
-    </section>
-    <!-- /banner_left_contacts -->
+  </section>
+  <!-- /banner_left_contacts -->
 
-    <section class="contacts_message">
+  <section class="contacts_message">
 
 
-    </section>
+  </section>
 
 
 

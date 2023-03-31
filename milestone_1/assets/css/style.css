@@ -85,4 +85,16 @@ body{
   color: var(--wa-header-icon);
 }
 /* #endregion search group */
+.user_name{
+  font-size: 14px;
+}
 
+.hour_message{
+  font-size: 10px;
+  color: var(--wa-header-icon);
+}
+
+.last_message_sent{
+  font-size: 10px;
+  color: var(--wa-header-icon);
+}
