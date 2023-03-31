@@ -89,8 +89,13 @@ body{
 
 /* #region users_contacts */
 .users{
-  height: 600px;
+  height: 597px;
+  
   overflow-y: auto;
+}
+
+.users div:hover{
+  background-color: var(--wa-header-bg);
 }
 
 .user_name{
@@ -120,4 +125,20 @@ body{
 .contacts_message main{
  background-image: url(../img/mine.jpg);
  height: 660px;
+}
+
+.message {
+  flex-shrink: 0;
+  padding: 6px 1rem;
+}
+
+.message_received{
+  display: flex;
+  align-items: center;
+  width: 45%;
+  min-height: 50px;
+  padding: 0 0.25rem 0 1rem;
+  border-radius: 6px;
+  margin: 10px 5px;
+  background-color: var(--wa-container-light);
 }
