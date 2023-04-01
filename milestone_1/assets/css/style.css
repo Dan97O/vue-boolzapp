@@ -1,5 +1,6 @@
 body{
   height: 100vh;
+  padding: 3vh 0;
   background: linear-gradient(var(--wa-gradient-green) 15%, var(--wa-gradient-light) 10% );
    overflow: hidden; 
 }
@@ -29,14 +30,15 @@ body{
 .my_container{
   max-width: 1200px;
   width: 80%;
-  margin: 1.5rem auto;
+  margin: 0 auto;
   background-color: var(--wa-container-light);
-  height: calc(100vh - 3rem);
+  height: calc(100% - 3rem);
   display: flex;
 }
 
 .banner_left_contacts{
   width: 40%;
+  height: 100%;
 }
 
 .user_profile h5{
@@ -57,6 +59,7 @@ body{
 }
 
 .banner_left_contacts header{
+  height: 70px;
   background-color: var(--wa-header-bg);
 }
 
@@ -66,6 +69,7 @@ body{
 /* #region silent mode */
 .silent_mode{
   background-color: var(--wa-silent-mode);
+  height: 80px;
 }
 
 .circle_silent_mode{
@@ -83,6 +87,10 @@ body{
 
 
 /* #region search group */
+.search_group{
+  height: 50px;
+}
+
 .search_group  i {
   color: var(--wa-header-icon);
 }
@@ -111,6 +119,7 @@ body{
 .last_message_sent{
   font-size: 10px;
   color: var(--wa-header-icon);
+  width: 100px;
 }
 
 /* #endregion users_contacts */
@@ -119,13 +128,16 @@ body{
 }
 
 .contacts_message header{
+  height: 70px;
   background-color: var(--wa-header-bg);
   border-left: 1px solid var(--wa-header-icon);
 }
 
+
 .contacts_message main{
  background-image: url(../img/mine.jpg);
  height: 660px;
+ overflow-y: auto;
 }
 
 .message {
@@ -153,8 +165,8 @@ body{
 
 .message_received span{
   position: absolute;
-  right: 2px;
-  bottom: 2px;
+  right: 6px;
+  bottom: 1px;
 }
 
 
@@ -167,3 +179,11 @@ body{
   margin-left: auto;
   background-color: var(--wa-message-sent);
 }
+
+
+/* #region Footer */
+
+footer{
+  height: 70px;
+}
+/* #region Footer */

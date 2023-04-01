@@ -202,10 +202,14 @@ createApp({
       this.contacts[this.activeChat].messages.push({...this.newObject})
       this.newObject.message = ''
     },
+
     messageGeneratedTime(){
       this.newMessageGenerated();
       setTimeout(() =>{this.requestNewMessage()},1000);
      }
+  },
+  currentTime() {
+    this.time = new Date().toLocaleTimeString();
   }
 
 }).mount('#app')

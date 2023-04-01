@@ -20,8 +20,9 @@
 <body>
 
 
-  <div id="app" class="my_container">
-
+  <div id="app">
+    
+    <div class="my_container">
 
     <section class="banner_left_contacts">
       <header class="d-flex justify-content-between align-items-center p-3">
@@ -63,20 +64,24 @@
             aria-label="Search" aria-describedby="search_group">
         </div>
         <!-- /search group -->
-        <div class="users overflow-auto ps-3 d-flex flex-column ">
-          <div class="d-flex align-items-center bg-white" v-for="(user, index) in contacts">
-            <div class="d-flex justify-content-between w-100">
-              <div class="d-flex align-items-center" @click="activeChat_change(index)">
+        <div class="users overflow-auto d-flex flex-column ">
+          <div class="d-flex align-items-center bg-white" v-for="(user, index) in contacts" @click="activeChat_change(index)">
+            <div class="d-flex justify-content-between w-100 ps-3">
+              <div class="d-flex align-items-center" >
                 <img class="img-fluid circle my-3 me-2" :src="user.avatar" alt="user.name">
                 <div class="user_txt">
                   <div class="user_name fw-semibold">{{user.name}}</div>
-                  <div class="last_message_sent"> Ultimo messaggio inviato
+                  <div class="last_message_sent"> {{user.messages[user.messages.length - 1].message}}
                   </div>
                 </div>
                 <!-- /user_txt -->
               </div>
-              <div class="user_hour">
-                <span class="hour_message"> {{user.messages[0].date}} </span>
+              <div class="user_hour d-flex flex-column align-items-end">
+                <div class="hour_message"> {{ (user.messages[user.messages.length - 1].date.split(' ')[0]).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit' })}} 
+                </div>
+                <div class="hour_message">
+                  {{user.messages[user.messages.length - 1].date.slice(11, 16)}}
+                </div>
               </div>
               <!-- /user_hour -->
             </div>
@@ -118,7 +123,7 @@
 
       <main>
 
-        <div class="h-100 px-5 overflow-auto position-relative">
+        <div class="px-5 position-relative">
           <div class="py-3 text d-flex flex-column-reverse flex-shrink-0 ">
             <div class="message" v-for="message in contacts[activeChat].messages.slice().reverse()">
               <div class="message_received" :class="message.status">
@@ -126,7 +131,7 @@
                 {{message.message}}
               </p>
                 <span class="hour_message">
-                  {{message.date}}
+                  {{message.date.slice(11, 16)}}
                 </span>
               </div>
              
@@ -173,7 +178,7 @@
 
 
 
-
+  </div>
 
 
 
