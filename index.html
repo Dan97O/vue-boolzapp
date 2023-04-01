@@ -64,8 +64,8 @@
             aria-label="Search" aria-describedby="search_group">
         </div>
         <!-- /search group -->
-        <div class="users overflow-auto d-flex flex-column ">
-          <div class="d-flex align-items-center bg-white" v-for="(user, index) in contacts" @click="activeChat_change(index)">
+        <ul class="users overflow-auto d-flex flex-column p-0">
+          <li class="d-flex align-items-center bg-white" v-for="(user, index) in contacts" @click="activeChat_change(index)">
             <div class="d-flex justify-content-between w-100 ps-3">
               <div class="d-flex align-items-center" >
                 <img class="img-fluid circle my-3 me-2" :src="user.avatar" alt="user.name">
@@ -76,7 +76,7 @@
                 </div>
                 <!-- /user_txt -->
               </div>
-              <div class="user_hour d-flex flex-column align-items-end">
+              <div class="user_hour d-flex flex-column align-items-end justify-content-center">
                 <div class="hour_message"> {{ (user.messages[user.messages.length - 1].date.split(' ')[0]).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit' })}} 
                 </div>
                 <div class="hour_message">
@@ -86,9 +86,9 @@
               <!-- /user_hour -->
             </div>
             <!-- /d-flex justify-content-between w-100 -->
-          </div>
+          </li>
 
-        </div>
+        </ul>
         <!-- /users -->
       </main>
       <!-- /main -->
@@ -152,7 +152,7 @@
       </main>
 
       <footer>
-        <div class="d-flex justify-content-around align-items-center px-3">
+        <div class="d-flex h-100 justify-content-around align-items-center px-3">
           <i class="fa-regular fa-face-smile fa-lg"></i>
           <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage" v-model="newMessage" @keyup.enter="messageGeneratedTime()"
             placeholder="Scrivi un nuovo messaggio">
