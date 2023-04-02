@@ -206,11 +206,23 @@ createApp({
     messageGeneratedTime(){
       this.newMessageGenerated();
       setTimeout(() =>{this.requestNewMessage()},1000);
-     }
+     },
+
+     toggleDarkMode() {
+        const styleCss = document.getElementById('style_css');
+        const darkMode = document.getElementById('dark_mode');
+        if (styleCss.disabled) {
+            styleCss.disabled = false;
+            darkMode.disabled = true;
+        } else {
+            styleCss.disabled = true;
+            darkMode.disabled = false;
+        }
+      },
+      currentTime() {
+          this.time = new Date().toLocaleTimeString();
+    },
   },
-  currentTime() {
-    this.time = new Date().toLocaleTimeString();
-  }
 
 }).mount('#app')
 

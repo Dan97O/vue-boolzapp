@@ -6,13 +6,13 @@ body{
 }
 
 :root {
-  --wa-gradient-green: #009688;
-  --wa-gradient-light: #dbdbd3;
-  --wa-container-light: #ffffff;
+  --wa-gradient-green: #000000de;
+  --wa-gradient-light: #000000dc;
+  --wa-container-light: #000000;
   --wa-header-icon: #b1b1b1;
-  --wa-header-bg: #eaeaea;
-  --wa-silent-mode: #8edafc;
-  --wa-message-sent: #d5f9ba;
+  --wa-header-bg: #000000c2;
+  --wa-silent-mode: #002f44;
+  --wa-message-sent: #014d18;
 
 }
 
@@ -22,7 +22,10 @@ body{
   width: 50px;
   border-radius: 50%;
 }
-
+input{
+  background-color: rgb(24, 24, 24)!important;
+  color: var(--wa-header-icon)!important;
+}
 .users::-webkit-scrollbar,
 .contacts_message main::-webkit-scrollbar{
   width: 5px;
@@ -36,7 +39,6 @@ body{
   background-color: var(--wa-header-icon);
   border-radius: 10px;
 }
-
 
 /* #endregion Utilities */
 
@@ -59,6 +61,7 @@ body{
 
 .user_profile h5{
   margin-bottom: -0.8px;
+  color: var(--wa-header-icon);
 }
 
 .user_profile img {
@@ -73,26 +76,23 @@ body{
   color: var(--wa-header-icon);
 }
 
-.hide_moon {
-  display: none;
-}
-
 .banner_left_contacts header button{
   background-color: var(--wa-header-bg);
 }
-.show_sun {
+
+.hide_moon{
   display: block;
   color: var(--wa-header-icon);
-  background-color: var(--wa-header-bg);
 }
 
+.show_sun{
+  display: none;
+}
 
 .nav_profile i {
   text-decoration: none;
   color: var(--wa-header-icon);
 }
-
-
 
 .banner_left_contacts header{
   height: 70px;
@@ -105,12 +105,14 @@ body{
 
 .banner_left_contacts main{
   height: calc(100% - 70px);
+  color: var(--wa-header-icon);
 }
 
 /* #region silent mode */
 .silent_mode{
   background-color: var(--wa-silent-mode);
   height: 80px;
+  color: var(--wa-header-icon);
 }
 
 .circle_silent_mode{
@@ -123,6 +125,7 @@ body{
 
 .silent_mode h6{
   margin-bottom: -0.2rem;
+  color: var(--wa-header-icon);
 }
 /* #endregion silent mode */
 
@@ -133,7 +136,7 @@ body{
 }
 
 .search_group > span{ 
-  background-color: var(--wa-container-light);
+  background-color: rgb(24, 24, 24)!important;
 }
 
 .search_group  i {
@@ -143,11 +146,13 @@ body{
 
 /* #region users_contacts */
 .users{
+  /* height: 597px; */
   height: calc(100% - 130px);
   overflow-y: auto;
   border-radius: 0 0 0 20px;
+  color: var(--wa-header-icon);
+  background-color: var(--wa-container-light);
 }
-
 
 .users li{
   background-color: var(--wa-container-light);
@@ -159,6 +164,7 @@ body{
 
 .user_name{
   font-size: 14px;
+  color: var(--wa-header-icon);
 }
 
 .user_hour{
@@ -179,6 +185,7 @@ body{
 /* #endregion users_contacts */
 .contacts_message .user_profile h5{
   margin-bottom: -8.8px;
+  color: var(--wa-header-icon);
 }
 
 .contacts_message header{
@@ -186,13 +193,14 @@ body{
   background-color: var(--wa-header-bg);
   border-left: 1px solid var(--wa-header-icon);
   border-radius: 0 20px 0 0;
+  color: var(--wa-header-icon);
 }
 
-
 .contacts_message main{
- background-image: url(../img/mine.jpg);
+  background-color: rgb(24, 24, 24);
  height: calc(100% - 140px);
  overflow-y: auto;
+ border-left: 1px solid var(--wa-header-icon);
 }
 
 .message {
@@ -210,29 +218,27 @@ body{
   margin: 10px 5px;
   position: relative;
   background-color: var(--wa-container-light);
+  color: var(--wa-header-icon);
 }
 
 .message_received p{
   width: 95%;
   margin: 15px auto;
   height: 80%;
+  color: var(--wa-header-icon);
 }
 
 .message_received span{
   position: absolute;
   right: 6px;
   bottom: 1px;
+  color: var(--wa-header-icon);
 }
-
-
-
-
-
-
 
 .sent{
   margin-left: auto;
   background-color: var(--wa-message-sent);
+  color: var(--wa-header-icon);
 }
 
 
@@ -242,6 +248,7 @@ footer{
   height: 70px;
   border-left: 1px solid var(--wa-header-icon);
   border-radius: 0 0 20px 0;
+  color: var(--wa-header-icon);
 }
 
 footer input{

@@ -13,17 +13,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <!-- Css -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/style.css" id="style_css">
+  <link rel="stylesheet" href="./assets/css/dark_mode.css" id="dark_mode" disabled>
   <title>Whatsapp</title>
 </head>
 
-<body>
+<body :class="{ 'theme-light': isLightTheme, 'theme-dark': !isLightTheme }">
 
 
   <div id="app">
+
+   
     
     <div class="my_container">
 
+      
     <section class="banner_left_contacts">
       <header class="d-flex justify-content-between align-items-center p-3">
         <div class="user_profile d-flex align-items-center">
@@ -31,6 +35,12 @@
             <img class="img-fluid" :src="contacts[1].avatar" alt="">
           </a>
           <h5>Daniel</h5>
+        </div>
+        <div class="d-flex ms-2">
+          <button @click="toggleDarkMode" class="border-0">
+            <i class="fas fa-moon" :class="{ 'hide_moon': isDarkMode, 'show_sun': !isDarkMode }"></i>
+            <i class="fas fa-sun" :class="{ 'hide_moon': !isDarkMode, 'show_sun': isDarkMode }"></i>
+          </button>
         </div>
         <nav class="nav_profile">
           <a href="#">
@@ -65,7 +75,7 @@
         </div>
         <!-- /search group -->
         <ul class="users overflow-auto d-flex flex-column p-0">
-          <li class="d-flex align-items-center bg-white" v-for="(user, index) in contacts" @click="activeChat_change(index)">
+          <li class="d-flex align-items-center" v-for="(user, index) in contacts" @click="activeChat_change(index)">
             <div class="d-flex justify-content-between w-100 ps-3">
               <div class="d-flex align-items-center" >
                 <img class="img-fluid circle my-3 me-2" :src="user.avatar" alt="user.name">
