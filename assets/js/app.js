@@ -16,6 +16,7 @@ createApp({
             newMessage: '',
             search: '',
             showContacts: true,
+            showDropdown: -1,
             time: '',
             newObject: {
                 date: '',
@@ -261,8 +262,14 @@ createApp({
                 this.showContacts = false; 
                 return this.contacts.filter((user) => user.name.toLowerCase().includes(this.search.toLowerCase().trim()));
               }
-          }
+          },
 
+        showMenu(index) {
+            this.showDropdown = this.showDropdown === index ? null : index;
+          },
+        removeMessage(index) {
+            this.contacts[this.activeChat].messages.splice(index, 1);
+          }
     },
 
 }).mount('#app')
