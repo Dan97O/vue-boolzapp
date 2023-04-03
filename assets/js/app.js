@@ -15,9 +15,9 @@ createApp({
             activeChat: 0,
             newMessage: '',
             search: '',
+            darkMode: false,
             showContacts: true,
             showDropdown: -1,
-            time: '',
             newObject: {
                 date: '',
                 message: '',
