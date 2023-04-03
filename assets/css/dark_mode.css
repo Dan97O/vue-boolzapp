@@ -122,6 +122,7 @@ input {
 .circle_silent_mode {
   height: 50px;
   width: 50px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: var(--wa-container-light);
   color: var(--wa-silent-mode);
@@ -233,7 +234,12 @@ input {
   color: var(--wa-header-icon);
 }
 
-.message span {
+.message i{
+  font-size: 14px;
+  color: var(--wa-header-icon);
+}
+
+.message .hour_message {
   position: absolute;
   right: 6px;
   bottom: 1px;
@@ -246,6 +252,18 @@ input {
   color: var(--wa-header-icon);
 }
 
+.delete_message{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 50%;
+  text-align: center;
+  box-shadow: -2px 2px 5px 0 var(--wa-container-light);
+  background-color: var(--wa-header-icon);
+  font-size:  14px;
+  padding: 10px 0px;
+  border-radius: 3px;
+}
 
 /* #region Footer */
 

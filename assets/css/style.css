@@ -223,15 +223,33 @@ body {
   height: 80%;
 }
 
-.message span {
+.message .hour_message span {
   position: absolute;
   right: 6px;
   bottom: 1px;
 }
 
+.message i{
+  font-size: 14px;
+  color: var(--wa-header-icon);
+}
+
 .sent {
   margin-left: auto;
   background-color: var(--wa-message-sent);
+}
+
+.delete_message{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 50%;
+    text-align: center;
+    box-shadow: -2px 2px 5px 0 var(--wa-container-light);
+    background-color: var(--wa-header-bg);
+    font-size:  14px;
+    padding: 10px 0px;
+    border-radius: 3px;
 }
 
 /* #region Footer */
