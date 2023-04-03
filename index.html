@@ -18,217 +18,152 @@
   <title>Whatsapp</title>
 </head>
 
-<body :class="{ 'theme-light': isLightTheme, 'theme-dark': !isLightTheme }">
+<body>
 
 
   <div id="app">
-
-   
-    
     <div class="my_container">
 
-      
-    <section class="banner_left_contacts">
-      <header class="d-flex justify-content-between align-items-center p-3">
-        <div class="user_profile d-flex align-items-center">
-          <a href="#">
-            <img class="img-fluid" :src="contacts[1].avatar" alt="">
-          </a>
-          <h5>Daniel</h5>
-        </div>
-        <div class="d-flex ms-2">
-          <button @click="toggleDarkMode" class="border-0">
-            <i class="fas fa-moon" :class="{ 'hide_moon': isDarkMode, 'show_sun': !isDarkMode }"></i>
-            <i class="fas fa-sun" :class="{ 'hide_moon': !isDarkMode, 'show_sun': isDarkMode }"></i>
-          </button>
-        </div>
-        <nav class="nav_profile">
-          <a href="#">
-            <i class="fa-solid fa-circle-notch me-3"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-message me-3"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-          </a>
-        </nav>
-      </header>
-      <!-- /header profile -->
-      <main>
-        <div class="silent_mode d-flex p-3 align-items-center">
-          <div class="circle_silent_mode d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-bell-slash fa-1x"></i>
+      <section class="banner_left_contacts">
+        <header class="d-flex justify-content-between align-items-center p-3">
+          <div class="user_profile d-flex align-items-center">
+            <a href="#">
+              <img class="img-fluid" :src="contacts[1].avatar" alt="">
+            </a>
+            <h5>Daniel</h5>
           </div>
-          <div class="mx-2">
-            <h6>Ricevi notifiche di nuovi messaggi</h6>
-            <a href="#">Attiva notifiche desktop</a>
+          <div class="d-flex ms-2">
+            <button @click="toggleDarkMode" class="border-0">
+              <i class="fas fa-moon" :class="{ 'hide_moon': isDarkMode, 'show_sun': !isDarkMode }"></i>
+              <i class="fas fa-sun" :class="{ 'hide_moon': !isDarkMode, 'show_sun': isDarkMode }"></i>
+            </button>
           </div>
-        </div>
-        <!-- /silent_mode -->
-        <div class="search_group input-group d-flex bg-white rounded-0 border-0">
-          <span class="input-group-text bg-white rounded-0 border-0" id="search_group">
-            <i class="fa-solid fa-magnifying-glass ms-3 border-0"></i>
-          </span>
-          <input type="text" class="form-control rounded-0 border-0" placeholder="Cerca o inizia una nuova chat"
-            aria-label="Search" aria-describedby="search_group">
-        </div>
-        <!-- /search group -->
-        <ul class="users overflow-auto d-flex flex-column p-0">
-          <li class="d-flex align-items-center" v-for="(user, index) in contacts" @click="activeChat_change(index)">
-            <div class="d-flex justify-content-between w-100 ps-3">
-              <div class="d-flex align-items-center" >
-                <img class="img-fluid circle my-3 me-2" :src="user.avatar" alt="user.name">
-                <div class="user_txt">
-                  <div class="user_name fw-semibold">{{user.name}}</div>
-                  <div class="last_message_sent"> {{user.messages[user.messages.length - 1].message}}
+          <nav class="nav_profile">
+            <a href="#">
+              <i class="fa-solid fa-circle-notch me-3"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-message me-3"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-ellipsis-vertical"></i>
+            </a>
+          </nav>
+        </header>
+        <!-- /header profile -->
+        <main>
+          <div class="silent_mode d-flex p-3 align-items-center">
+            <div class="circle_silent_mode d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-bell-slash fa-1x"></i>
+            </div>
+            <div class="mx-2">
+              <h6>Ricevi notifiche di nuovi messaggi</h6>
+              <a href="#">Attiva notifiche desktop</a>
+            </div>
+          </div>
+          <!-- /silent_mode -->
+          <div class="search_group input-group d-flex bg-white rounded-0 border-0">
+            <span class="input-group-text bg-white rounded-0 border-0" id="search_group">
+              <i class="fa-solid fa-magnifying-glass ms-3 border-0"></i>
+            </span>
+            <input type="text" class="form-control rounded-0 border-0" placeholder="Cerca o inizia una nuova chat"
+              aria-label="Search" aria-describedby="search_group" v-model="search">
+          </div>
+          <!-- /search group -->
+          <ul class="users overflow-auto d-flex flex-column p-0">
+            <li class="d-flex align-items-center" v-for="(user, index) in filterContacts()" @click="activeChat_change(index)" v-show="showContacts">
+              <div class="d-flex justify-content-between w-100 ps-3">
+                <div class="d-flex align-items-center" >
+                  <img class="img-fluid circle my-3 me-2" :src="user.avatar" alt="user.name">
+                  <div class="user_txt">
+                    <div class="user_name fw-semibold">{{user.name}}</div>
+                    <div class="last_message_sent"> {{user.messages[user.messages.length - 1].message}}
+                    </div>
+                  </div>
+                  <!-- /user_txt -->
+                </div>
+                <div class="user_hour d-flex flex-column align-items-end justify-content-center">
+                  <div class="hour_message"> {{ (user.messages[user.messages.length - 1].date.split(' ')[0]).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit' })}} 
+                  </div>
+                  <div class="hour_message">
+                    {{user.messages[user.messages.length - 1].date.slice(11, 16)}}
                   </div>
                 </div>
-                <!-- /user_txt -->
+                <!-- /user_hour -->
               </div>
-              <div class="user_hour d-flex flex-column align-items-end justify-content-center">
-                <div class="hour_message"> {{ (user.messages[user.messages.length - 1].date.split(' ')[0]).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit' })}} 
-                </div>
-                <div class="hour_message">
-                  {{user.messages[user.messages.length - 1].date.slice(11, 16)}}
-                </div>
-              </div>
-              <!-- /user_hour -->
+              <!-- /d-flex justify-content-between w-100 -->
+            </li>
+
+          </ul>
+          <!-- /users -->
+        </main>
+        <!-- /main -->
+      </section>
+      <!-- /banner_left_contacts -->
+
+      <section class="contacts_message w-100">
+        <header class="d-flex justify-content-between align-items-center p-3">
+          <div class="user_profile d-flex align-items-center">
+            <a href="#">
+              <img class="img-fluid me-3" :src="contacts[activeChat].avatar" alt="">
+            </a>
+            <div>
+              <h5 class="user_profile">{{contacts[activeChat].name}}</h5>
+              <span class="hour_message"> Ultimo accesso: {{contacts[activeChat].messages[0].date}} </span>
             </div>
-            <!-- /d-flex justify-content-between w-100 -->
-          </li>
 
-        </ul>
-        <!-- /users -->
-      </main>
-      <!-- /main -->
-    </section>
-    <!-- /banner_left_contacts -->
-
-    <section class="contacts_message w-100">
-      <header class="d-flex justify-content-between align-items-center p-3">
-        <div class="user_profile d-flex align-items-center">
-          <a href="#">
-            <img class="img-fluid me-3" :src="contacts[activeChat].avatar" alt="">
-          </a>
-          <div>
-            <h5 class="user_profile">{{contacts[activeChat].name}}</h5>
-            <span class="hour_message"> Ultimo accesso: {{contacts[activeChat].messages[0].date}} </span>
           </div>
+          <nav class="nav_profile">
+            <a href="#">
+              <i class="fa-solid fa-magnifying-glass me-3"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-paperclip me-3"></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-ellipsis-vertical me-3"></i>
+            </a>
+          </nav>
+        </header>
+        <!-- /header profile messages -->
 
-        </div>
-        <nav class="nav_profile">
-          <a href="#">
-            <i class="fa-solid fa-magnifying-glass me-3"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-paperclip me-3"></i>
-          </a>
-          <a href="#">
-            <i class="fa-solid fa-ellipsis-vertical me-3"></i>
-          </a>
-        </nav>
-      </header>
-      <!-- /header profile messages -->
-
-      <main>
-
-        <div class="px-5 position-relative">
-          <div class="py-3 text d-flex flex-column-reverse flex-shrink-0 ">
-            <div class="message" v-for="message in contacts[activeChat].messages.slice().reverse()">
-              <div class="message_received" :class="message.status">
-               <p>
-                {{message.message}}
-              </p>
-                <span class="hour_message">
-                  {{message.date.slice(11, 16)}}
-                </span>
+        <main>
+          <div class="px-5 position-relative">
+            <div class="py-3 text d-flex flex-column-reverse flex-shrink-0" >
+              <div class="message" v-for="message in contacts[activeChat].messages.slice().reverse()">
+                <div class="message_received" :class="message.status">
+                <p>
+                  {{message.message}}
+                </p>
+                  <span class="hour_message">
+                    {{message.date.slice(11, 16)}}
+                  </span>
+                </div>
               </div>
-             
-
             </div>
-            
+            <!-- /message_received -->
           </div>
-          <!-- /message_received -->
-          
-        
+        </main>
+        <!-- /main -->
 
+        <footer>
+          <div class="d-flex h-100 justify-content-around align-items-center px-3">
+            <i class="fa-regular fa-face-smile fa-lg"></i>
+            <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage" v-model="newMessage" @keyup.enter="messageGeneratedTime()"
+              placeholder="Scrivi un nuovo messaggio">
+            <i class="fa-solid fa-microphone fa-lg"></i>
+          </div>
+        </footer>
 
-
-
-        </div>
-
-
-      </main>
-
-      <footer>
-        <div class="d-flex h-100 justify-content-around align-items-center px-3">
-          <i class="fa-regular fa-face-smile fa-lg"></i>
-          <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage" v-model="newMessage" @keyup.enter="messageGeneratedTime()"
-            placeholder="Scrivi un nuovo messaggio">
-          <i class="fa-solid fa-microphone fa-lg"></i>
-        </div>
-      </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </section>
-    <!-- /contacts_message right -->
-
-
-
-
-  </div>
-
-
-
+      </section>
+      <!-- /contacts_message right -->
+    </div>
+    <!-- /my_container -->  
   </div>
   <!-- /#app -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- VueJs -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <!-- Js -->
   <script src="./assets/js/app.js"></script>
-
 </body>
-
 </html>
