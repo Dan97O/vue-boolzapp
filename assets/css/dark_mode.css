@@ -209,12 +209,12 @@ input {
   border-left: 1px solid var(--wa-header-icon);
 }
 
-.message {
+.messages {
   flex-shrink: 0;
   padding: 6px 1rem;
 }
 
-.message_received {
+.message {
   display: flex;
   align-items: center;
   width: 45%;
@@ -224,17 +224,16 @@ input {
   margin: 10px 5px;
   position: relative;
   background-color: var(--wa-container-light);
-  color: var(--wa-header-icon);
 }
 
-.message_received p {
+.message p {
   width: 95%;
   margin: 15px auto;
   height: 80%;
   color: var(--wa-header-icon);
 }
 
-.message_received span {
+.message span {
   position: absolute;
   right: 6px;
   bottom: 1px;

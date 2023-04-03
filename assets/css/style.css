@@ -200,12 +200,12 @@ body {
   overflow-y: auto;
 }
 
-.message {
+.messages {
   flex-shrink: 0;
   padding: 6px 1rem;
 }
 
-.message_received {
+.message {
   display: flex;
   align-items: center;
   width: 45%;
@@ -217,13 +217,13 @@ body {
   background-color: var(--wa-container-light);
 }
 
-.message_received p {
+.message p {
   width: 95%;
   margin: 15px auto;
   height: 80%;
 }
 
-.message_received span {
+.message span {
   position: absolute;
   right: 6px;
   bottom: 1px;

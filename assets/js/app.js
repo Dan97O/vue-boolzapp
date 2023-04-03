@@ -16,6 +16,7 @@ createApp({
             newMessage: '',
             search: '',
             showContacts: true,
+            time: '',
             newObject: {
                 date: '',
                 message: '',
@@ -193,15 +194,20 @@ createApp({
             this.activeChat = index
         },
         newMessageGenerated() {
+
+            let now = this.currentTime()
             this.newObject.message = this.newMessage
             this.newMessage = ''
+            this.newObject.date = now
             this.newObject.status = 'sent'
+
             this.contacts[this.activeChat].messages.push({ ...this.newObject })
         },
 
         requestNewMessage() {
             this.newObject.message = 'Ok😎👌'
             this.newObject.status = 'received'
+            this.newObject.date = this.currentTime()
             this.contacts[this.activeChat].messages.push({ ...this.newObject })
             this.newObject.message = ''
         },
@@ -212,7 +218,26 @@ createApp({
         },
 
         currentTime() {
-            this.time = new Date().toLocaleTimeString();
+            let now = new Date();
+            let day = now.getDate();
+            let month = now.getMonth() + 1;
+            let year = now.getFullYear();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+          
+            if (day <= 9) {
+              day = '0' + day;
+            }
+            if (month <= 9) {
+              month = '0' + month;
+            }
+            if (hours <= 9) {
+              hours = '0' + hours;
+            }
+            if (minutes <= 9) {
+              minutes = '0' + minutes;
+            }
+            return `${day}/${month}/${year} ${hours}:${minutes}`;
         },
 
         toggleDarkMode() {
@@ -227,18 +252,8 @@ createApp({
             }
         },
 
-        searchContacts() {
-           if (this.search){
-            return this.contacts.filter((item) =>{
-                return this.search.toLowerCase().split(' ').every(contacts => item.name.toLowerCase().includes(contacts))
-            })
-           } else {
-            return this.contacts;
-           }
-          },
-
-          //se non fai ricerca mostra tutti i contatti altrimenti li filtra
-          filterContacts(){
+        //se non fai ricerca mostra tutti i contatti altrimenti li filtra
+        filterContacts(){
             if (this.search === '') {
                 this.showContacts = true; 
                 return this.contacts;
