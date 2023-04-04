@@ -140,7 +140,7 @@
                     </span>
                     <span class="hour_message">{{ message.date.slice(11, 16) }}</span>
                   </div>
-                  <div class="delete_message dropdown-menu" :class="{ show: showDropdown === index  && showContextMenu }">
+                  <div class="delete_message dropdown-menu" :class="{ show: showDropdown === index && showContextMenu }">
                     <span class="dropdown-item">Message Info</span>
                     <span @click="removeMessage(index)">Delete message</span>
                   </div>

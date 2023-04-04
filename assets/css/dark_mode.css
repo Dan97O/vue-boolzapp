@@ -169,6 +169,7 @@ input {
 
 .users div:hover {
   background-color: rgb(24, 24, 24);
+  cursor: pointer;
 }
 
 .user_name {
@@ -258,6 +259,18 @@ input {
   background-color: var(--wa-message-sent);
   color: var(--wa-header-icon);
 }
+
+.sent:hover{
+  background-color: #014d189f;
+  cursor: pointer;
+}
+
+.received:hover{
+  background-color: #000000a1;
+  cursor: pointer;
+}
+
+
 
 .delete_message{
   position: absolute;

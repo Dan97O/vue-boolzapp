@@ -162,6 +162,7 @@ body {
 
 .users div:hover {
   background-color: var(--wa-header-bg);
+  cursor: pointer;
 }
 
 .user_name {
@@ -242,6 +243,16 @@ body {
   background-color: var(--wa-message-sent);
 }
 
+.sent:hover{
+  background-color: #d5f9ba9d;
+  cursor: pointer;
+}
+
+.received:hover{
+  background-color: #ffffff9d;
+  cursor: pointer;
+}
+
 .delete_message{
     position: absolute;
     right: 10px;
@@ -266,6 +277,10 @@ footer {
 
 footer input {
   margin: 0 1rem;
+}
+
+footer i {
+  cursor: pointer;
 }
 
 /* #region Footer */
