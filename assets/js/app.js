@@ -18,6 +18,7 @@ createApp({
             darkMode: false,
             showContacts: true,
             showDropdown: -1,
+            showContextMenu: false,
             newObject: {
                 date: '',
                 message: '',
@@ -202,14 +203,14 @@ createApp({
             this.newObject.date = now
             this.newObject.status = 'sent'
 
-            this.contacts[this.activeChat].messages.push({ ...this.newObject })
+            this.contacts[this.activeChat].messages.push( {...this.newObject} )
         },
 
         requestNewMessage() {
             this.newObject.message = 'Ok😎👌'
             this.newObject.status = 'received'
             this.newObject.date = this.currentTime()
-            this.contacts[this.activeChat].messages.push({ ...this.newObject })
+            this.contacts[this.activeChat].messages.push({...this.newObject} )
             this.newObject.message = ''
         },
 
@@ -266,6 +267,7 @@ createApp({
 
         showMenu(index) {
             this.showDropdown = this.showDropdown === index ? null : index;
+            this.showContextMenu = true
           },
         removeMessage(index) {
             this.contacts[this.activeChat].messages.splice(index, 1);

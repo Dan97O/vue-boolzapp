@@ -15,6 +15,8 @@
   <!-- Css -->
   <link rel="stylesheet" href="./assets/css/style.css" id="style_css">
   <link rel="stylesheet" href="./assets/css/dark_mode.css" id="dark_mode" disabled>
+  <!-- Font -->
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
   <title>Whatsapp</title>
 </head>
 
@@ -73,7 +75,7 @@
           <ul class="users overflow-auto d-flex flex-column p-0">
             <li class="d-flex align-items-center py-1" v-for="(user, index) in filterContacts()" @click="activeChat_change(index)" v-show="showContacts">
               <div class="d-flex justify-content-between w-100 ps-3">
-                <div class="d-flex align-items-center" >
+                <div class="d-flex align-items-center">
                   <img class="img-fluid circle my-3 me-2" :src="user.avatar" alt="user.name">
                   <div class="user_txt">
                     <div class="user_name fw-semibold">{{user.name}}</div>
@@ -83,7 +85,8 @@
                   <!-- /user_txt -->
                 </div>
                 <div class="user_hour d-flex flex-column align-items-end justify-content-center">
-                  <div class="hour_message"> {{ (user.messages[user.messages.length - 1].date.split(' ')[0]).toLocaleString('it-IT', { year: 'numeric', month: '2-digit', day: '2-digit' })}} 
+                  <div class="hour_message"> {{ (user.messages[user.messages.length - 1].date.split(' ')[0]).toLocaleString('it-IT', {
+                    year: 'numeric', month: '2-digit', day: '2-digit' })}}
                   </div>
                   <div class="hour_message">
                     {{user.messages[user.messages.length - 1].date.slice(11, 16)}}
@@ -93,7 +96,6 @@
               </div>
               <!-- /d-flex justify-content-between w-100 -->
             </li>
-
           </ul>
           <!-- /users -->
         </main>
@@ -111,7 +113,6 @@
               <h5 class="user_profile">{{contacts[activeChat].name}}</h5>
               <span class="hour_message"> Ultimo accesso: {{contacts[activeChat].messages[0].date}} </span>
             </div>
-
           </div>
           <nav class="nav_profile">
             <a href="#">
@@ -131,7 +132,7 @@
           <div class="px-5 position-relative">
             <div class="py-3 text d-flex flex-column-reverse flex-shrink-0">
               <div class="messages">
-                <div class="message" v-for="(message, index) in contacts[activeChat].messages" :key="index" :class="message.status">
+                <div class="message" v-for="(message, index) in contacts[activeChat].messages" :key="index" :class="message.status" @contextmenu.prevent="showMenu(index)">
                   <p>{{ message.message }}</p>
                   <div class="d-flex flex-column justify-content-between align-self-stretch">
                     <span @click.stop="showMenu(index)" class="text-end">
@@ -139,7 +140,7 @@
                     </span>
                     <span class="hour_message">{{ message.date.slice(11, 16) }}</span>
                   </div>
-                  <div class="delete_message dropdown-menu" :class="{ show: showDropdown === index }">
+                  <div class="delete_message dropdown-menu" :class="{ show: showDropdown === index  && showContextMenu }">
                     <span class="dropdown-item">Message Info</span>
                     <span @click="removeMessage(index)">Delete message</span>
                   </div>
@@ -154,8 +155,8 @@
         <footer>
           <div class="d-flex h-100 justify-content-around align-items-center px-3">
             <i class="fa-regular fa-face-smile fa-lg"></i>
-            <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage" v-model="newMessage" @keyup.enter="messageGeneratedTime()"
-              placeholder="Scrivi un nuovo messaggio">
+            <input type="text" class="form-control border-0 text_dark" name="newMessage" id="newMessage" v-model="newMessage"
+              @keyup.enter="messageGeneratedTime()" placeholder="Scrivi un nuovo messaggio">
             <i class="fa-solid fa-microphone fa-lg"></i>
           </div>
         </footer>
@@ -166,6 +167,9 @@
     <!-- /my_container -->  
   </div>
   <!-- /#app -->
+
+
+
   <!-- VueJs -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <!-- Js -->
