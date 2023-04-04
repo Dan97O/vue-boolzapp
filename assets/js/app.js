@@ -197,12 +197,15 @@ createApp({
         
         /* New message input */
         newMessageGenerated() {
+            /* Current Time */
             let now = this.currentTime()
+            /* new message generated */
             this.contacts[this.activeChat].messages.push( {
                 date: now,
                 message: this.newMessage,
                 status: 'sent'
             } )
+            /* reset input */
             this.newMessage = ''
         },
 
@@ -217,8 +220,14 @@ createApp({
 
         /* response generation time */
         messageGeneratedTime() {
-            this.newMessageGenerated();
-            setTimeout(() => { this.requestNewMessage() }, 1000);
+            if (this.newMessage === "" || this.newMessage.trim().length === 0) {
+                /* Prevent the user from sending a message that is blank or consists only of spaces */
+                return;
+            } else {
+                /* generate message --> setTimeout 1s --> reply message */
+                this.newMessageGenerated();
+                setTimeout(() => { this.requestNewMessage() }, 1000);
+            }
         },
 
         /* Time now */
@@ -283,7 +292,7 @@ createApp({
         /* Random Response */
         randomizedResponse(max) {
             return this.randomResponse[Math.floor(Math.random() * (max + 1))];
-          },
+        },
         
     },
 
