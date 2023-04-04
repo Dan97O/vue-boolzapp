@@ -111,9 +111,11 @@
             </a>
             <div>
               <h5 class="user_profile">{{contacts[activeChat].name}}</h5>
-              <span class="hour_message"> Ultimo accesso: 
-                {{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date.slice(0, 10) }} alle ore:
-                {{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date.slice(11, 16) }} </span>
+              <span class="hour_message"> Ultimo accesso: {{`${isWriting}`}} 
+                <span v-if="!isWriting">{{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date.slice(0, 10) }} alle ore:
+                  {{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date.slice(11, 16) }}
+                </span> 
+              </span>
             </div>
           </div>
           <nav class="nav_profile">

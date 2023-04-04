@@ -22,6 +22,7 @@ createApp({
             randomResponse: [
                 "Va bene😎","Non lo so😅","Potrebbe essere😄","Dipende","Probabilmente🤣","Non ci ho mai pensato🤯","Sono d'accordo con te👌","Non sono sicuro❌","Può darsi😉","Non ho una risposta definitiva🤗","Non mi importa😑","Non ho un'opinione precisa😑","Forse😄","Mi sembra ragionevole😌","Non ne ho idea😟","Non sono sicuro di capire🤪","Potremmo discuterne😄","Non voglio rispondere❌","Puoi spiegare meglio?","OK, come vuoi😎","Beh, dipende dal contesto😅","Non saprei cosa dire😎","Non sono sicura di essere d'accordo","Potrebbe essere possibile😎","Sono aperto a nuove idee🛫","Non ho un'opinione forte su questo argomento","Non vedo l'ora di scoprirlo😎","È una possibilità😎","Non ho mai pensato a questo prima d'ora","Sarà interessante vedere cosa succederà🤪",
               ],
+            isWriting: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -197,6 +198,7 @@ createApp({
         
         /* New message input */
         newMessageGenerated() {
+
             /* Current Time */
             let now = this.currentTime()
             /* new message generated */
@@ -226,8 +228,25 @@ createApp({
             } else {
                 /* generate message --> setTimeout 1s --> reply message */
                 this.newMessageGenerated();
-                setTimeout(() => { this.requestNewMessage() }, 1000);
+
+                /* isWriting = Typing */
+                this.isWriting = true
+                this.isWriting = 'Sta scrivendo...'
+                setTimeout(() => { 
+                    this.requestNewMessage() }, 1000);
             }
+
+            /* Online */
+            let isOnline = setTimeout(() => { 
+                this.isWriting = true
+                this.isWriting = 'Online'
+            }, 3000);
+
+            /* isWriting = Clear */
+            setTimeout(() => { 
+               clearTimeout(isOnline)
+               this.isWriting = ''
+            }, 6000);
         },
 
         /* Time now */
