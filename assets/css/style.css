@@ -121,6 +121,7 @@ body {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  aspect-ratio: 1/1;
   background-color: var(--wa-container-light);
   color: var(--wa-silent-mode);
 }

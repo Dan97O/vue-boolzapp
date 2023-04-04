@@ -19,12 +19,9 @@ createApp({
             showContacts: true,
             showDropdown: -1,
             showContextMenu: false,
-            newObject: {
-                date: '',
-                message: '',
-                status: 'sent',
-            },
-
+            randomResponse: [
+                "Va bene😎","Non lo so😅","Potrebbe essere😄","Dipende","Probabilmente🤣","Non ci ho mai pensato🤯","Sono d'accordo con te👌","Non sono sicuro❌","Può darsi😉","Non ho una risposta definitiva🤗","Non mi importa😑","Non ho un'opinione precisa😑","Forse😄","Mi sembra ragionevole😌","Non ne ho idea😟","Non sono sicuro di capire🤪","Potremmo discuterne😄","Non voglio rispondere❌","Puoi spiegare meglio?","OK, come vuoi😎","Beh, dipende dal contesto😅","Non saprei cosa dire😎","Non sono sicura di essere d'accordo","Potrebbe essere possibile😎","Sono aperto a nuove idee🛫","Non ho un'opinione forte su questo argomento","Non vedo l'ora di scoprirlo😎","È una possibilità😎","Non ho mai pensato a questo prima d'ora","Sarà interessante vedere cosa succederà🤪",
+              ],
             contacts: [
                 {
                     name: 'Michele',
@@ -192,33 +189,39 @@ createApp({
 
     },
     methods: {
+
+        /* change contact on click */
         activeChat_change(index) {
             this.activeChat = index
         },
+        
+        /* New message input */
         newMessageGenerated() {
-
             let now = this.currentTime()
-            this.newObject.message = this.newMessage
+            this.contacts[this.activeChat].messages.push( {
+                date: now,
+                message: this.newMessage,
+                status: 'sent'
+            } )
             this.newMessage = ''
-            this.newObject.date = now
-            this.newObject.status = 'sent'
-
-            this.contacts[this.activeChat].messages.push( {...this.newObject} )
         },
 
+        /* reply */
         requestNewMessage() {
-            this.newObject.message = 'Ok😎👌'
-            this.newObject.status = 'received'
-            this.newObject.date = this.currentTime()
-            this.contacts[this.activeChat].messages.push({...this.newObject} )
-            this.newObject.message = ''
+            this.contacts[this.activeChat].messages.push({
+                date: this.currentTime(),
+                message: this.randomizedResponse(this.randomResponse.length -1),
+                status: 'received'
+            } )
         },
 
+        /* response generation time */
         messageGeneratedTime() {
             this.newMessageGenerated();
             setTimeout(() => { this.requestNewMessage() }, 1000);
         },
 
+        /* Time now */
         currentTime() {
             let now = new Date();
             let day = now.getDate();
@@ -242,6 +245,7 @@ createApp({
             return `${day}/${month}/${year} ${hours}:${minutes}`;
         },
 
+        /* Toggle Dark Mode */
         toggleDarkMode() {
             const styleCss = document.getElementById('style_css');
             const darkMode = document.getElementById('dark_mode');
@@ -254,7 +258,7 @@ createApp({
             }
         },
 
-        //se non fai ricerca mostra tutti i contatti altrimenti li filtra
+        //show all contacts otherwise  filter them 
         filterContacts(){
             if (this.search === '') {
                 this.showContacts = true; 
@@ -263,15 +267,24 @@ createApp({
                 this.showContacts = false; 
                 return this.contacts.filter((user) => user.name.toLowerCase().includes(this.search.toLowerCase().trim()));
               }
-          },
+        },
 
+        /* Show Menu */
         showMenu(index) {
             this.showDropdown = this.showDropdown === index ? null : index;
             this.showContextMenu = true
           },
+
+        /* Remove message */
         removeMessage(index) {
             this.contacts[this.activeChat].messages.splice(index, 1);
-          }
+        },
+
+        /* Random Response */
+        randomizedResponse(max) {
+            return this.randomResponse[Math.floor(Math.random() * (max + 1))];
+          },
+        
     },
 
 }).mount('#app')
