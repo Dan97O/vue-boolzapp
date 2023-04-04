@@ -300,4 +300,7 @@ footer input {
   margin: 0 1rem;
 }
 
+footer i {
+  cursor: pointer;
+}
 /* #region Footer */

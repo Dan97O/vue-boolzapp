@@ -111,7 +111,9 @@
             </a>
             <div>
               <h5 class="user_profile">{{contacts[activeChat].name}}</h5>
-              <span class="hour_message"> Ultimo accesso: {{contacts[activeChat].messages[0].date}} </span>
+              <span class="hour_message"> Ultimo accesso: 
+                {{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date.slice(0, 10) }} alle ore:
+                {{ contacts[activeChat].messages[contacts[activeChat].messages.length - 1].date.slice(11, 16) }} </span>
             </div>
           </div>
           <nav class="nav_profile">
@@ -171,7 +173,7 @@
 
 
   <!-- VueJs -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.min.js"></script>
   <!-- Js -->
   <script src="./assets/js/app.js"></script>
 </body>
